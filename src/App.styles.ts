@@ -4,13 +4,12 @@ export const Container = styled.div`
     background-color: #27282F;
     color: #FFF;
     min-height: 100vh;
-    padding: 15px;
+    padding: 1px 15px;
 `
 
 export const Header = styled.header`
     margin: auto;
     max-width: 980px;
-    padding: 30px 0;
     text-align: center;
     
     span {
