@@ -2,14 +2,22 @@ import * as C from './styles';
 
 type Props = {
     name: string;
-    url: string
+    url: string;
+    onDelete: (name: string) => void
 }
 
-export const PhotoItem = ({name, url}: Props) => {
+export const PhotoItem = ({ name, url, onDelete }: Props) => {
     return (
         <C.Container>
-            <img src={url} />
-            <label htmlFor="">{name}</label>
+
+            <label htmlFor="">
+                <img src={url} />
+                {name}
+            </label>
+
+            <button onClick={() => onDelete(name)}>
+                Excluir
+            </button>
         </C.Container>
     );
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FormEvent } from 'react'
-import {getAll, insert} from './services/photos'
+import { deletePhoto, getAll, insert } from './services/photos'
 
 import * as C from './App.styles'
 import { Photo } from './types/Photo';
@@ -11,16 +11,15 @@ export const App = () => {
   const [loading, setLoading] = useState(false);
   const [photos, setPhotos] = useState<Photo[]>([])
 
-  useEffect(() => {
-
-    const getPhotos = async () => {
-      setLoading(true);
-      setPhotos(await getAll());
-      setLoading(false);
-    }
+  useEffect(() => {    
     getPhotos()
-
   }, [])
+
+  const getPhotos = async () => {
+    setLoading(true);
+    setPhotos(await getAll());
+    setLoading(false);
+  }
 
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -28,7 +27,7 @@ export const App = () => {
     const formData = new FormData(e.currentTarget);
     const file = formData.get('image') as File;
 
-    if(file && file.size > 0) {
+    if (file && file.size > 0) {
       setUploading(true);
       let result = await insert(file)
       setUploading(false);
@@ -43,6 +42,11 @@ export const App = () => {
     }
   }
 
+  const handleDeleteBtn = async (name: string) => {
+    await deletePhoto(name);
+    getPhotos()
+  }
+
   return (
     <C.Container>
       <C.Header>
@@ -50,8 +54,8 @@ export const App = () => {
         <span>...with Firebase, uuid and Styled-Components!</span>
 
         <C.UploadForm method='POST' onSubmit={handleFormSubmit}>
-          <input type="file" name='image'/>
-          <input type="submit" value='Send'/>
+          <input type="file" name='image' />
+          <input type="submit" value='Send' />
           {uploading && 'Enviando...'}
         </C.UploadForm>
 
@@ -63,8 +67,13 @@ export const App = () => {
 
         {!loading && photos.length > 0 &&
           <C.PhotoList>
-            {photos.map((item, index)=>(
-              <PhotoItem key={index} url={item.url} name={item.name}/>
+            {photos.map((item, index) => (
+              <PhotoItem
+                key={index}
+                url={item.url}
+                name={item.name}
+                onDelete={handleDeleteBtn}
+              />
             ))}
           </C.PhotoList>
         }

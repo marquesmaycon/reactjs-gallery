@@ -9,8 +9,7 @@ export const Container = styled.div`
     transition: all ease .3s;
 
     &:hover {
-        background-color: #4e4f54;
-        transform: scale(1.01);
+        background-color: #3d3f4F;
     }
 
     img {
@@ -22,5 +21,23 @@ export const Container = styled.div`
 
     label {
         font-size: 13px;
+    }
+
+    button {
+        display: inline-block;
+        background: linear-gradient(90deg, rgba(39,40,47,1) 18%, rgba(61,63,67,1) 100%);
+        border: 0;
+        color: #FFF;
+        font-weight: bold;
+        padding: 8px 16px;
+        width: 70%;
+        border-radius: 5px;
+        margin: 10px 20px;
+        cursor: pointer;
+        transition: all ease .3s;
+
+        &:hover {
+            border-radius: 15px;
+        }
     }
 `
