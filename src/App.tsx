@@ -4,6 +4,7 @@ import { deletePhoto, getAll, insert } from './services/photos'
 import * as C from './App.styles'
 import { Photo } from './types/Photo';
 import { PhotoItem } from './components/PhotoItem';
+import { Footer } from './components/Footer';
 
 export const App = () => {
 
@@ -83,6 +84,7 @@ export const App = () => {
             <span>🙁</span><br /> Não há fotos para mostrar...
           </C.LoadWarning>
         }
+        <Footer/>
       </C.Header>
     </C.Container>
   )
