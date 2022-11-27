@@ -11,8 +11,7 @@ Adicionei `Tema Escuro` e `Estilizações` póprias.
 
 ## :desktop_computer: Hospedagem
 
-O projeto foi hospedado na Vercel. [Clique aqui para acessar](reactjs-gallery-sooty.vercel.app
-) 
+O projeto foi hospedado na Vercel. [Clique aqui para acessar](https://reactjs-gallery-marquesmaycon.vercel.app) 
 (Na hospedagem não há fotos devido a privacidade dos dados do Firebase. Segue GIF mostrando o funcionamento)
 <img src='public/gallerypreview.gif'>
 
